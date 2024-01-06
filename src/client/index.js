@@ -1,1 +1,3 @@
-alert("working");
+import { handleSubmit } from "./scripts/handleForm";
+
+export { handleSubmit };
