@@ -26,7 +26,9 @@ const handleSubmit = async (event) => {
 
   // get city picture
 
-  const cityPic = getCityPic(name);
+  const cityPic = await getCityPic(name);
+
+  updateUI(RemainDays, Weather, cityPic.image, name);
 };
 
 const getCity = async () => {
@@ -66,6 +68,37 @@ const getCityPic = async (name) => {
   const { data } = await axios.post("http://localhost:8000/getPic", { name });
   console.log(data);
   return data;
+};
+
+const updateUI = (RemainDays, Weather, cityPic, name) => {
+  document.querySelector(
+    "#Rdays"
+  ).innerHTML = `Your Trip starts in ${RemainDays} days from now`;
+
+  document.querySelector(".cityName").innerHTML = `Location: ${name}`;
+
+  document.querySelector(".weather").innerHTML =
+    RemainDays > 7
+      ? `Weather is ${Weather.description}`
+      : `Weather is expected to be ${Weather.description}`;
+
+  document.querySelector(".temp").innerHTML =
+    RemainDays > 7
+      ? `Forecast ${Weather.temp}&deg C`
+      : `Temperature ${Weather.temp}&deg C`;
+
+  document.querySelector(".max-temp").innerHTML =
+    RemainDays > 7 ? `Max-Temp: ${Weather.app_max_temp}&degC` : " ";
+
+  document.querySelector(".min-temp").innerHTML =
+    RemainDays > 7 ? `Min-Temp: ${Weather.app_min_temp}&degC` : "";
+
+  document.querySelector(".cityPic").innerHTML = `<image 
+   src="${cityPic}" 
+   alt="an image that describes the city nature"
+   >
+   `;
+  document.querySelector(".flight_data").style.display = "block";
 };
 
 // we need to export the function to index.js file
