@@ -8,12 +8,12 @@ const handleSubmit = async (event) => {
   event.preventDefault();
 
   // check if the function working or not
-  console.log("working");
+  // console.log("working");
 
   //   getting the city information form the first API
-  const location = getCity();
+  const location = await getCity();
   const { name, lng, lat } = location;
-  console.log(location);
+  // console.log(location);
 
   //   getting the date input value
   const date = dateInput.value;
@@ -21,17 +21,22 @@ const handleSubmit = async (event) => {
   //   console.log(RemainDays);
 
   //   after getting the city ifo , will use it to get the weather info form the second API
-  const Weather = getWeather(lng, lat, RemainDays);
+  const Weather = await getWeather(lng, lat, RemainDays);
+  console.log(Weather);
+
+  // get city picture
+
+  const cityPic = getCityPic(name);
 };
 
 const getCity = async () => {
-  console.log("first");
+  // console.log("first");
   const { data } = await axios.post("http://localhost:8000/getCity", form, {
     headers: {
       "Content-Type": "application/json",
     },
   });
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -54,8 +59,14 @@ const getWeather = async (lng, lat, RemainDays) => {
     lat,
     RemainDays,
   });
+  return data;
+};
+
+const getCityPic = async (name) => {
+  const { data } = await axios.post("http://localhost:8000/getPic", { name });
   console.log(data);
   return data;
 };
+
 // we need to export the function to index.js file
 export { handleSubmit };
