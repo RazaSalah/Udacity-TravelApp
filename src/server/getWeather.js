@@ -1,6 +1,13 @@
 const axios = require("axios");
 
 const getWeather = async (lng, lat, RemainDays, weather_key) => {
+  if (RemainDays < 0) {
+    const errMsg = {
+      message: "Date can't be in the past , please enter a valid date",
+      error: true,
+    };
+    return errMsg;
+  }
   if (RemainDays > 0 && RemainDays < 7) {
     const { data } = await axios.get(
       `https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lng}&units=M&key=${weather_key}`

@@ -3,20 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Document</title>
   </head>
   <body>
     <!-- Form -->
+    <div class="container">
     <h1>Where you want to go and when ?</h1>
     <form onsubmit="return Client.handleSubmit(event)">
       <div>
         <label for="city">City</label>
         <input type="text" name="city" id="city" />
       </div>
+      <div id="city_error" style="color: red"></div>
       <div>
         <label for="date">Date</label>
         <input type="date" name="date" id="date" />
       </div>
+        <div id="date_error" style="color: red"></div>
+      <div>
       <button>Submit</button>
     </form>
 
@@ -29,6 +34,8 @@
       <p class="min-temp"></p>
       <p class="weather"></p>
       <div class="cityPic"></div>
+      
+    </div>
     </div>
   </body>
 </html>
