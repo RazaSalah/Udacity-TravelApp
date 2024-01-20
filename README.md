@@ -1,10 +1,10 @@
 # Travel App Project
--Overview
+## Overview
 This project is a Travel App that allows users to plan and visualize their trips. The app obtains the user's desired trip location and date, 
 then displays the weather and an image of the location using information obtained from external APIs. As the Capstone project,
 there is an emphasis on going above and beyond, adding additional functionality and customization to create a standout project for your portfolio.
 
--Features
+## Features
 User Input:
 Collects the user's desired trip location.
 Takes the user's selected date for the trip.
@@ -19,20 +19,20 @@ Presents an image of the destination to enhance the user's experience.
 
 # Additional Customizations
 
--Trip Duration:
+## Trip Duration:
 Allow users to input the duration of their trip.
 
--Currency Converter:
+## Currency Converter:
 Integrate a currency converter to display local currency information.
 
--Multiple Destinations:
+## Multiple Destinations:
 Enable users to plan multi-destination trips.
 
--User Authentication:
+## User Authentication:
 Implement user accounts to save and retrieve trip details.
 
 ## the languages used:
--HTML, CSS, JavaScript
--Node.js, Express.js
--External APIs for weather and image data
+- HTML, CSS, JavaScript
+- Node.js, Express.js
+- External APIs for weather and image data
 
